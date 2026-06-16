@@ -10,14 +10,14 @@ const h = window.innerHeight;
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
-camera.position.x = 5;
+camera.position.x = 4;
 
 // make canvas transparent
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(w, h);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 0.6;
+renderer.toneMappingExposure = 0.4;
 
 // ensure correct color/output encoding and physically correct lights
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -105,15 +105,15 @@ busshelter.position.sub(center); // move model so its center is at (0,0,0) relat
 pivot.add(busshelter);
 
 // start rotated 270 degrees around Y
-pivot.rotation.y = -0.7 * Math.PI / 2; // 270deg
+pivot.rotation.y = 0.7 * Math.PI / 2; // 270deg
 
-// pivot.rotation.z = 0.08 * Math.PI / 2; // 270deg
+// pivot.rotation.x = 0.08 * Math.PI / 2; // 270deg
 
 // bounce setup: 180° total (min = 270° - 180° = 90°, max = 270°)
 const clock = new THREE.Clock();
 const rotationSpeed = 0.3; // radians per second (~0.005 per frame at 60fps)
 const startAngle = pivot.rotation.y; // 270deg
-const fullRange = 0.5 * Math.PI; // 180° in radians
+const fullRange = 0.3 * Math.PI; // 180° in radians
 const minAngle = startAngle - fullRange; // 90deg
 const maxAngle = startAngle; // 270deg
 let rotationDirection = -1; // start moving away from 270° in the same direction as before
